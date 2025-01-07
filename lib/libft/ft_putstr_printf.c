@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_int.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_printf.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlima-de <tlima-de@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 18:39:16 by tlima-de          #+#    #+#             */
-/*   Updated: 2024/03/13 18:50:23 by tlima-de         ###   ########.fr       */
+/*   Created: 2022/05/04 21:53:43 by sleleu            #+#    #+#             */
+/*   Updated: 2022/11/26 00:32:34 by sleleu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_int(int n)
+int	ft_putstr_printf(char *s, int fd)
 {
-	int				nb;
-	unsigned int	i;
+	int	i;
 
-	nb = n;
-	i = 1;
-	if (n < 0 && n != -2147483648)
+	i = 0;
+	if (!s)
 	{
-		nb = -n;
+		ft_putstr_printf("(null)", 1);
+		return (6);
+	}
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
 		i++;
 	}
-	while (nb > 9)
-	{
-		nb = nb / 10;
-		i++;
-	}
-	ft_putnbr_fd(n, 1);
-	if (n == -2147483648)
-		return (11);
 	return (i);
 }

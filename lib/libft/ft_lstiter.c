@@ -1,12 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_player.c                                      :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlima-de <tlima-de@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/06 15:03:07 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/01/06 15:03:08 by tlima-de         ###   ########.fr       */
+/*   Created: 2022/05/17 21:44:17 by sleleu            #+#    #+#             */
+/*   Updated: 2022/09/13 20:53:34 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "./libft.h"
+
+void	ft_lstiter(t_list *lst, void (*f)(void *))
+{
+	if (!lst)
+		return ;
+	else
+	{
+		while (lst)
+		{
+			f(lst->content);
+			lst = lst->next;
+		}
+	}
+}

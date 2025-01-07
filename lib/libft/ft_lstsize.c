@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_char.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlima-de <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/10 15:27:55 by tlima-de          #+#    #+#             */
-/*   Updated: 2024/03/10 15:27:58 by tlima-de         ###   ########.fr       */
+/*   Created: 2022/05/17 17:12:10 by sleleu            #+#    #+#             */
+/*   Updated: 2022/09/13 20:53:34 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
 
-int	print_char(char c)
+#include "./libft.h"
+
+int	ft_lstsize(t_list *lst)
 {
-	write(1, &c, sizeof(char));
-	return (1);
+	int	i;
+
+	i = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }

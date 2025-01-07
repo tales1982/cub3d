@@ -3,17 +3,18 @@ NAME = cub3d
 
 # Compilador e flags
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Ilib/minilibx-linux -Ilib/libft
+CFLAGS = -Wall -Wextra -Werror -Ilib/minilibx-linux -Ilib/libft -Iinclude -no-pie
 
 # Diretórios
-SRCS_DIR = src
+SRCS_DIRS = src map player render utils
 OBJS_DIR = obj
 LIBMLX_DIR = lib/minilibx-linux
 LIBFT_DIR = lib/libft
+ASSETS_DIR = asserts
 
 # Arquivos fontes e objetos
-SRCS = $(wildcard $(SRCS_DIR)/*.c)
-OBJS = $(patsubst $(SRCS_DIR)/%.c, $(OBJS_DIR)/%.o, $(SRCS))
+SRCS = $(shell find $(SRCS_DIRS) -type f -name '*.c')
+OBJS = $(patsubst %.c, $(OBJS_DIR)/%.o, $(SRCS))
 
 # Bibliotecas
 LIBS = -L$(LIBMLX_DIR) -lmlx -lm -lX11 -lXext -L$(LIBFT_DIR) -lft
@@ -42,8 +43,8 @@ $(LIBMLX_DIR)/libmlx.a:
 	@printf "$(CYAN)Compiling MinilibX...$(RESET)\n"
 	@make -C $(LIBMLX_DIR)
 
-$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
-	@mkdir -p $(OBJS_DIR)
+$(OBJS_DIR)/%.o: %.c
+	@mkdir -p $(dir $@)
 	@printf "$(BLUE)Compiling $<...$(RESET)\n"
 	$(CC) $(CFLAGS) -c $< -o $@
 

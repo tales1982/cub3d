@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_string.c                                     :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlima-de <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rvrignon <rvrignon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/10 15:38:10 by tlima-de          #+#    #+#             */
-/*   Updated: 2024/03/10 15:38:27 by tlima-de         ###   ########.fr       */
+/*   Created: 2022/05/17 17:02:33 by sleleu            #+#    #+#             */
+/*   Updated: 2022/09/13 20:53:34 by rvrignon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "./libft.h"
 
-int	print_string(char *s)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	unsigned int	i;
-
-	i = 0;
-	if (!s)
-	{
-		write(1, "(null)", 6);
-		return (6);
-	}
-	while (s[i] != '\0')
-	{
-		i++;
-	}
-	write(1, s, i);
-	return (i);
+	if (!lst || !new)
+		return ;
+	new->next = *lst;
+	*lst = new;
 }
