@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlima-de <tlima-de@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:59:12 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/01/07 14:46:59 by tlima-de         ###   ########.fr       */
+/*   Updated: 2025/01/07 22:20:21 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 #if !defined(PLAYER_H)
 #define PLAYER_H
 
-#include <unistd.h>
-#include "libft.h"
-#include "mlx.h"
+#include "cub3d.h"
+#include <stdbool.h>
 
 
-
-void move_player(int keycode, char **map, int *player_x, int *player_y);
-
+void init_player(t_player *player);
+int key_release(int keycode, t_player *player);
+int key_press(int keycode, t_player *player);
+void move_player(t_player *player);
 
 #endif // PLAYER_H
 
