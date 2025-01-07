@@ -6,7 +6,7 @@
 /*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 22:00:26 by tales             #+#    #+#             */
-/*   Updated: 2025/01/07 22:23:11 by tales            ###   ########.fr       */
+/*   Updated: 2025/01/07 22:41:23 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 #include "player.h"  // Para a função init_player
 #include "map.h"     // Para a função get_map
 
-
-
+// Inicializa o jogo
 void init_game(t_game *game)
 {
     init_player(&game->player);

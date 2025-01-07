@@ -15,7 +15,7 @@
 #include "player.h"  // Para funções como move_player
 #include "map.h"     // Para a função draw_map
 
-
+// função que coloca um pixel na tela
 void put_pixel(int x, int y, int color, t_game *game)
 {
     if(x >= WIDTH || y >= HEIGHT || x < 0 || y < 0)
@@ -27,7 +27,7 @@ void put_pixel(int x, int y, int color, t_game *game)
     game->data[index + 2] = (color >> 16) & 0xFF;
 }
 
-// our own clear_image
+// função que limpa a imagem
 void clear_image(t_game *game)
 {
     for(int y = 0; y < HEIGHT; y++)
@@ -35,7 +35,7 @@ void clear_image(t_game *game)
             put_pixel(x, y, 0, game);
 }
 
-// utils functions
+// função que desenha um quadrado
 void draw_square(int x, int y, int size, int color, t_game *game)
 {
     for(int i = 0; i < size; i++)
@@ -47,7 +47,7 @@ void draw_square(int x, int y, int size, int color, t_game *game)
     for(int i = 0; i < size; i++)
         put_pixel(x + i, y + size, color, game);
 }
-// raycasting functions
+// função que desenha uma linha
 void draw_line(t_player *player, t_game *game, float start_x, int i)
 {
     float cos_angle = cos(start_x);
@@ -76,6 +76,7 @@ void draw_line(t_player *player, t_game *game, float start_x, int i)
     }
 }
 
+// função que desenha o loop do jogo
 int draw_loop(t_game *game)
 {
     t_player *player = &game->player;

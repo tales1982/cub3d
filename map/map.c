@@ -6,13 +6,13 @@
 /*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:02:16 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/01/07 21:49:13 by tales            ###   ########.fr       */
+/*   Updated: 2025/01/07 22:40:14 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 
-// initialisation functions
+// função que retorna um mapa
 char **get_map(void)
 {
     char **map = malloc(sizeof(char *) * 11);
@@ -30,6 +30,7 @@ char **get_map(void)
     return (map);
 }
 
+// função que desenha o mapa
 void draw_map(t_game *game)
 {
     char **map = game->map;
