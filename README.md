@@ -162,7 +162,7 @@ Com base nas regras e requisitos do exercício, eis os pontos que precisam ser c
 
 ## ajustar 
 
-1. Parsing do Arquivo .cub
+1. Parsing do Arquivo .cub --(sandro)
 Atualmente, o código carrega um mapa hardcoded em get_map, mas o exercício exige que o mapa seja lido de um arquivo .cub.
 Deve-se implementar:
 Leitura do arquivo .cub.
@@ -185,21 +185,21 @@ Renderizar a textura correta com base na face do muro atingida pelo raycasting.
 O código deve permitir a configuração de cores diferentes para o chão e o teto (parsing dos identificadores F e C).
 Deve-se implementar o preenchimento do chão e do teto com as cores apropriadas.
 
-4. Gerenciamento de Eventos e Saída
+4. Gerenciamento de Eventos e Saída -- (sandro)
 O código deve:
 Fechar a janela e encerrar o programa ao pressionar ESC.
 Fechar a janela e encerrar o programa ao clicar no botão de fechar (cruz vermelha).
 Gerenciar redimensionamento/minimização da janela.
 Deve-se garantir que toda a memória alocada seja liberada ao sair do programa.
 
-5. Validação do Mapa
+5. Validação do Mapa --(sandro)
 O mapa deve ser validado para garantir que:
 Ele está completamente cercado por muros (1).
 Existe exatamente uma posição inicial (N, S, E, W).
 Não contém caracteres inválidos.
 Deve-se verificar que espaços (0) são gerenciados corretamente no raycasting.
 
-6. Leaks de Memória
+6. Leaks de Memória --Sandro
 Verifique se toda memória alocada é liberada.
 Use ferramentas como valgrind para identificar vazamentos de memória.
 Garanta que free seja chamado para:
@@ -213,7 +213,7 @@ Não existam mais de 5 funções por arquivo.
 Variáveis globais sejam evitadas.
 Execute um teste de norminette para validar o código.
 
-8. Erros de Configuração
+8. Erros de Configuração --(sandro)
 Caso um erro ocorra no arquivo .cub ou no mapa, o programa deve sair com:
 plaintext
 Copiar código

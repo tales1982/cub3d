@@ -74,15 +74,7 @@ void draw_line(t_player *player, t_game *game, float start_x, int i)
             start_y++;
         }
     }
-}
-
-// função que desenha o loop do jogo
-int draw_loop(t_game *game)
-{
-    t_player *player = &game->player;
-    move_player(player);
-    clear_image(game);
-    if(DEBUG)
+}l
     {
         draw_square(player->x, player->y, 10, 0x00FF00, game);
         draw_map(game);
