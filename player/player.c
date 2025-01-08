@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tlima-de <tlima-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:03:17 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/01/07 22:40:37 by tales            ###   ########.fr       */
+/*   Updated: 2025/01/08 14:15:24 by tlima-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "player.h"
 
-// Inicializa o jogador
 void init_player(t_player *player)
 {
     player->x = WIDTH / 2;
@@ -28,7 +27,6 @@ void init_player(t_player *player)
     player->right_rotate = false;
 }
 
-// Função que trata o pressionamento de teclas
 int key_press(int keycode, t_player *player)
 {
     if(keycode == W)
@@ -46,7 +44,6 @@ int key_press(int keycode, t_player *player)
     return 0;
 }
 
-// Função que trata a soltura de teclas
 int key_release(int keycode, t_player *player)
 {
     if(keycode == W)
@@ -64,7 +61,6 @@ int key_release(int keycode, t_player *player)
     return 0;
 }
 
-// Função que move o jogador
 void move_player(t_player *player)
 {
     int speed = 3;

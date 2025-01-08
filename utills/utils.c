@@ -3,22 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tlima-de <tlima-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:04:37 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/01/07 22:41:56 by tales            ###   ########.fr       */
+/*   Updated: 2025/01/08 14:14:59 by tlima-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
 
-// função que calcula a distância entre dois pontos
+// distance calculation functions
 float distance(float x, float y){
     return sqrt(x * x + y * y);
 }
 
-// função que calcula a distância fixa entre dois pontos
 float fixed_dist(float x1, float y1, float x2, float y2, t_game *game)
 {
     float delta_x = x2 - x1;
@@ -28,7 +27,7 @@ float fixed_dist(float x1, float y1, float x2, float y2, t_game *game)
     return fix_dist;
 }
 
-// função que verifica se um ponto toca em uma parede
+// touch function 
 bool touch(float px, float py, t_game *game)
 {
     int x = px / BLOCK;

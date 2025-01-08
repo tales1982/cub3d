@@ -1,21 +1,9 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   render.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: tlima-de <tlima-de@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/07 12:42:24 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/01/07 15:50:11 by tlima-de         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "render.h"  // Cabeçalho para funções de renderização
 #include "utils.h"   // Para funções como touch e fixed_dist
 #include "player.h"  // Para funções como move_player
 #include "map.h"     // Para a função draw_map
 
-// função que coloca um pixel na tela
+
 void put_pixel(int x, int y, int color, t_game *game)
 {
     if(x >= WIDTH || y >= HEIGHT || x < 0 || y < 0)
@@ -27,7 +15,7 @@ void put_pixel(int x, int y, int color, t_game *game)
     game->data[index + 2] = (color >> 16) & 0xFF;
 }
 
-// função que limpa a imagem
+// our own clear_image
 void clear_image(t_game *game)
 {
     for(int y = 0; y < HEIGHT; y++)
@@ -35,7 +23,7 @@ void clear_image(t_game *game)
             put_pixel(x, y, 0, game);
 }
 
-// função que desenha um quadrado
+// utils functions
 void draw_square(int x, int y, int size, int color, t_game *game)
 {
     for(int i = 0; i < size; i++)
@@ -47,7 +35,7 @@ void draw_square(int x, int y, int size, int color, t_game *game)
     for(int i = 0; i < size; i++)
         put_pixel(x + i, y + size, color, game);
 }
-// função que desenha uma linha
+// raycasting functions
 void draw_line(t_player *player, t_game *game, float start_x, int i)
 {
     float cos_angle = cos(start_x);
@@ -74,7 +62,14 @@ void draw_line(t_player *player, t_game *game, float start_x, int i)
             start_y++;
         }
     }
-}l
+}
+
+int draw_loop(t_game *game)
+{
+    t_player *player = &game->player;
+    move_player(player);
+    clear_image(game);
+    if(DEBUG)
     {
         draw_square(player->x, player->y, 10, 0x00FF00, game);
         draw_map(game);

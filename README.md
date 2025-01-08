@@ -162,8 +162,9 @@ Com base nas regras e requisitos do exercício, eis os pontos que precisam ser c
 
 ## ajustar 
 
-1. Parsing do Arquivo .cub --(sandro)
-Atualmente, o código carrega um mapa hardcoded em get_map, mas o exercício exige que o mapa seja lido de um arquivo .cub.
+1. Parsing do Arquivo .cub --(Tales)
+Atualmente, o código carrega um mapa hardcoded em get_map,
+mas o exercício exige que o mapa seja lido de um arquivo .cub.
 Deve-se implementar:
 Leitura do arquivo .cub.
 Parsing das configurações:
@@ -257,3 +258,166 @@ Error
 
 - Utilize valgrind para verificar leaks de memória.
 - Teste o código com norminette.
+
+```
+
+```
+cub3d
+├─ LICENSE
+├─ Makefile
+├─ README.md
+├─ asserts
+│  ├─ maps
+│  │  ├─ level1.cub
+│  │  └─ level2.cub
+│  └─ textures
+│     ├─ 3.xpm
+│     ├─ 4.xpm
+│     ├─ q1.xpm
+│     ├─ q2.xpm
+│     ├─ q3.xpm
+│     └─ q4.xpm
+├─ include
+│  ├─ cub3d.h
+│  ├─ map.h
+│  ├─ player.h
+│  ├─ render.h
+│  └─ utils.h
+├─ lib
+│  ├─ libft
+│  │  ├─ Makefile
+│  │  ├─ ft_atoi.c
+│  │  ├─ ft_bzero.c
+│  │  ├─ ft_calloc.c
+│  │  ├─ ft_format.c
+│  │  ├─ ft_isalnum.c
+│  │  ├─ ft_isalpha.c
+│  │  ├─ ft_isascii.c
+│  │  ├─ ft_isdigit.c
+│  │  ├─ ft_isprint.c
+│  │  ├─ ft_itoa.c
+│  │  ├─ ft_lstadd_back.c
+│  │  ├─ ft_lstadd_front.c
+│  │  ├─ ft_lstclear.c
+│  │  ├─ ft_lstdelone.c
+│  │  ├─ ft_lstiter.c
+│  │  ├─ ft_lstlast.c
+│  │  ├─ ft_lstmap.c
+│  │  ├─ ft_lstnew.c
+│  │  ├─ ft_lstsize.c
+│  │  ├─ ft_memchr.c
+│  │  ├─ ft_memcmp.c
+│  │  ├─ ft_memcpy.c
+│  │  ├─ ft_memmove.c
+│  │  ├─ ft_memset.c
+│  │  ├─ ft_printf.c
+│  │  ├─ ft_printf.h
+│  │  ├─ ft_putchar_fd.c
+│  │  ├─ ft_putchar_printf.c
+│  │  ├─ ft_putendl_fd.c
+│  │  ├─ ft_putnbr_fd.c
+│  │  ├─ ft_putnbr_printf.c
+│  │  ├─ ft_putstr_fd.c
+│  │  ├─ ft_putstr_printf.c
+│  │  ├─ ft_split.c
+│  │  ├─ ft_strchr.c
+│  │  ├─ ft_strdup.c
+│  │  ├─ ft_striteri.c
+│  │  ├─ ft_strjoin.c
+│  │  ├─ ft_strlcat.c
+│  │  ├─ ft_strlcpy.c
+│  │  ├─ ft_strlen.c
+│  │  ├─ ft_strmapi.c
+│  │  ├─ ft_strncmp.c
+│  │  ├─ ft_strnstr.c
+│  │  ├─ ft_strrchr.c
+│  │  ├─ ft_strtrim.c
+│  │  ├─ ft_substr.c
+│  │  ├─ ft_tolower.c
+│  │  ├─ ft_toupper.c
+│  │  ├─ get_next_line.c
+│  │  ├─ get_next_line_utils.c
+│  │  └─ libft.h
+│  └─ minilibx-linux
+│     ├─ .github
+│     │  └─ workflows
+│     │     └─ ci.yml
+│     ├─ .gitignore
+│     ├─ LICENSE
+│     ├─ Makefile
+│     ├─ Makefile.gen
+│     ├─ Makefile.mk
+│     ├─ README.md
+│     ├─ configure
+│     ├─ man
+│     │  ├─ man1
+│     │  │  ├─ mlx.1
+│     │  │  ├─ mlx_loop.1
+│     │  │  ├─ mlx_new_image.1
+│     │  │  ├─ mlx_new_window.1
+│     │  │  └─ mlx_pixel_put.1
+│     │  └─ man3
+│     │     ├─ mlx.3
+│     │     ├─ mlx_loop.3
+│     │     ├─ mlx_new_image.3
+│     │     ├─ mlx_new_window.3
+│     │     └─ mlx_pixel_put.3
+│     ├─ mlx.h
+│     ├─ mlx_clear_window.c
+│     ├─ mlx_destroy_display.c
+│     ├─ mlx_destroy_image.c
+│     ├─ mlx_destroy_window.c
+│     ├─ mlx_expose_hook.c
+│     ├─ mlx_ext_randr.c
+│     ├─ mlx_flush_event.c
+│     ├─ mlx_get_color_value.c
+│     ├─ mlx_get_data_addr.c
+│     ├─ mlx_hook.c
+│     ├─ mlx_init.c
+│     ├─ mlx_int.h
+│     ├─ mlx_int_anti_resize_win.c
+│     ├─ mlx_int_do_nothing.c
+│     ├─ mlx_int_get_visual.c
+│     ├─ mlx_int_param_event.c
+│     ├─ mlx_int_set_win_event_mask.c
+│     ├─ mlx_int_str_to_wordtab.c
+│     ├─ mlx_int_wait_first_expose.c
+│     ├─ mlx_key_hook.c
+│     ├─ mlx_lib_xpm.c
+│     ├─ mlx_loop.c
+│     ├─ mlx_loop_hook.c
+│     ├─ mlx_mouse.c
+│     ├─ mlx_mouse_hook.c
+│     ├─ mlx_new_image.c
+│     ├─ mlx_new_window.c
+│     ├─ mlx_pixel_put.c
+│     ├─ mlx_put_image_to_window.c
+│     ├─ mlx_rgb.c
+│     ├─ mlx_screen_size.c
+│     ├─ mlx_set_font.c
+│     ├─ mlx_string_put.c
+│     ├─ mlx_xpm.c
+│     ├─ mlx_xpm.c.ok
+│     ├─ rgb2c.pl
+│     └─ test
+│        ├─ Makefile.gen
+│        ├─ Makefile.mk
+│        ├─ main.c
+│        ├─ new_win.c
+│        ├─ open.xpm
+│        ├─ open24.xpm
+│        ├─ open30.xpm
+│        └─ run_tests.sh
+├─ map
+│  └─ map.c
+├─ player
+│  └─ player.c
+├─ render
+│  └─ render.c
+├─ src
+│  ├─ init.c
+│  └─ main.c
+└─ utills
+   └─ utils.c
+
+```

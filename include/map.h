@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tlima-de <tlima-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:59:00 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/01/07 22:24:46 by tales            ###   ########.fr       */
+/*   Updated: 2025/01/08 13:49:32 by tlima-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 //funções
 char **get_map(void);
 void draw_map(t_game *game);
+void free_map(char **map);
 
 
 
