@@ -48,6 +48,12 @@ $(OBJS_DIR)/%.o: %.c
 	@printf "$(BLUE)Compiling $<...$(RESET)\n"
 	$(CC) $(CFLAGS) -c $< -o $@
 
+valgrind: $(NAME)
+	@printf "$(CYAN)Running Valgrind on $(NAME)...$(RESET)\n"
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file=valgrind-report.txt ./$(NAME) asserts/maps/level1.cub
+	@printf "$(GREEN)Valgrind finished. Check valgrind-report.txt for details.$(RESET)\n"
+
+
 clean:
 	@printf "$(RED)Cleaning objects...$(RESET)\n"
 	rm -rf $(OBJS_DIR)
