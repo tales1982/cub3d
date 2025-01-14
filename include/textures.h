@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player.h                                           :+:      :+:    :+:   */
+/*   textures.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlima-de <tlima-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/06 14:59:12 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/01/14 11:16:58 by tlima-de         ###   ########.fr       */
+/*   Created: 2025/01/14 11:18:19 by tlima-de          #+#    #+#             */
+/*   Updated: 2025/01/14 11:51:58 by tlima-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//Funções e estruturas do jogador
+#ifndef TEXTURES_H
+#define TEXTURES_H
 
-#if !defined(PLAYER_H)
-#define PLAYER_H
-
-#include "cub3d.h"
-#include <stdbool.h>
+#include "cub3d.h" // Para a estrutura t_game
+#include "mlx.h"
+#include "libft.h"
 
 
-void init_player(t_player *player);
-int key_release(int keycode, t_player *player);
-int key_press(int keycode, t_player *player);
-void move_player(t_player *player);
+void load_textures(const char *line, t_textures *textures);
 void parse_colors(const char *line, t_game *game);
+void load_images(void *mlx, t_textures *textures);
 
-#endif // PLAYER_H
-
+#endif // TEXTURES_H

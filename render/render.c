@@ -63,24 +63,45 @@ void draw_line(t_player *player, t_game *game, float start_x, int i)
         ray_y += sin_angle;
     }
 
+    int direction = touch(ray_x, ray_y, game);
+    void *texture = NULL;
+
+    // Selecionar textura com base na direção
+    if (direction == NORTH)
+        texture = game->textures.north;
+    else if (direction == SOUTH)
+        texture = game->textures.south;
+    else if (direction == WEST)
+        texture = game->textures.west;
+    else if (direction == EAST)
+        texture = game->textures.east;
+
+    if (!texture)
+        return;
+
     float dist = fixed_dist(player->x, player->y, ray_x, ray_y, game);
     float height = (BLOCK / dist) * (WIDTH / 2);
     int wall_start = (HEIGHT - height) / 2;
     int wall_end = wall_start + height;
 
-    // Pintar o teto
-    for (int y = 0; y < wall_start; y++)
-        put_pixel(i, y, 0x87CEEB, game); // Cor azul clara (código hexadecimal)
+    int texture_width = 64, texture_height = 64;
+    int texture_x = (int)((ray_x - floor(ray_x / BLOCK) * BLOCK) * texture_width / BLOCK);
 
-    // Pintar a parede
     for (int y = wall_start; y < wall_end; y++)
-        put_pixel(i, y, 0xFF0000, game); // Cor branca (pode alterar para outra cor)
+    {
+        int texture_y = (y - wall_start) * texture_height / (wall_end - wall_start);
+        int color = get_texture_color(texture, texture_x, texture_y);
+        put_pixel(i, y, color, game);
+    }
 
-    // Pintar o solo
+    // Pintar teto
+    for (int y = 0; y < wall_start; y++)
+        put_pixel(i, y, game->ceiling_color, game);
+
+    // Pintar solo
     for (int y = wall_end; y < HEIGHT; y++)
-        put_pixel(i, y, 0x228B22, game); // Cor verde (código hexadecimal)
+        put_pixel(i, y, game->floor_color, game);
 }
-
 
 
 int draw_loop(t_game *game)
@@ -116,6 +137,22 @@ int draw_loop(t_game *game)
 
     return 0;
 }
+
+int get_texture_color(void *img, int x, int y)
+{
+    int bpp, size_line, endian;
+    char *data = mlx_get_data_addr(img, &bpp, &size_line, &endian);
+    if (!data)
+    {
+        fprintf(stderr, "Error: Invalid texture data\n");
+        exit(EXIT_FAILURE);
+    }
+
+    int index = (y * size_line) + (x * (bpp / 8));
+    return *(int *)(data + index);
+}
+
+
 
 
 /*

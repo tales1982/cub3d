@@ -6,7 +6,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -Ilib/minilibx-linux -Ilib/libft -Iinclude -no-pie
 
 # Diretórios
-SRCS_DIRS = src map player render utills
+SRCS_DIRS = src map player render utills textures
 OBJS_DIR = obj
 LIBMLX_DIR = lib/minilibx-linux
 LIBFT_DIR = lib/libft

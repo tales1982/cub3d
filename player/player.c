@@ -6,7 +6,7 @@
 /*   By: tlima-de <tlima-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:03:17 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/01/08 14:15:24 by tlima-de         ###   ########.fr       */
+/*   Updated: 2025/01/14 11:35:26 by tlima-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,3 +98,11 @@ void move_player(t_player *player)
         player->y += cos_angle * speed;
     }
 }
+
+
+/*
+Resumo do Uso de PI
+2 * PI: Representa uma rotação completa (360 graus).
+cos e sin: Usam o ângulo em radianos para determinar o deslocamento no plano.
+Normalização do ângulo: Garante que o ângulo não ultrapasse os limites de uma rotação completa, evitando cálculos redundantes.
+*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tlima-de <tlima-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:58:38 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/01/07 22:18:44 by tales            ###   ########.fr       */
+/*   Updated: 2025/01/14 14:24:08 by tlima-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,13 @@ typedef struct s_player {
     bool right_rotate;
 } t_player;
 
+typedef struct s_textures {
+    void *north;
+    void *south;
+    void *east;
+    void *west;
+} t_textures;
+
 typedef struct s_game {
     void *mlx;
     void *win;
@@ -59,11 +66,16 @@ typedef struct s_game {
     int bpp;
     int size_line;
     int endian;
-    t_player player;
 
+    t_player player;
     char **map;
+    t_textures textures; // Adicione esta linha
+    int floor_color;
+    int ceiling_color;
 } t_game;
 
+
 void init_game(t_game *game);
+void debug_textures(t_textures *textures);
 
 #endif // CUB3D_H  
