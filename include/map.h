@@ -6,7 +6,7 @@
 /*   By: tlima-de <tlima-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:59:00 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/01/14 14:23:37 by tlima-de         ###   ########.fr       */
+/*   Updated: 2025/01/15 13:20:46 by tlima-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 
 #define MAP_HEIGHT 14
-#define MAP_WIDTH  30 // Ajuste conforme a largura do seu mapa
+#define MAP_WIDTH  28 // Ajuste conforme a largura do seu mapa
 #define WIDTH 1280
 #define HEIGHT 720
 

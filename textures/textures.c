@@ -6,15 +6,12 @@
 /*   By: tlima-de <tlima-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:19:07 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/01/14 14:33:33 by tlima-de         ###   ########.fr       */
+/*   Updated: 2025/01/15 13:07:54 by tlima-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "textures.h"
 #include <stdio.h>
-
-
 
 void load_textures(const char *line, t_textures *textures)
 {
@@ -32,7 +29,6 @@ void load_textures(const char *line, t_textures *textures)
         exit(EXIT_FAILURE);
     }
 }
-
 
 void parse_colors(const char *line, t_game *game)
 {
@@ -66,28 +62,23 @@ void parse_colors(const char *line, t_game *game)
     free(split);
 }
 
-
-
 void load_images(void *mlx, t_textures *textures)
 {
     int width, height;
 
     textures->north = mlx_xpm_file_to_image(mlx, "asserts/textures/north.xpm", &width, &height);
-    if (!textures->north)
-        fprintf(stderr, "Error loading texture: north\n");
 
     textures->south = mlx_xpm_file_to_image(mlx, "asserts/textures/south.xpm", &width, &height);
-    if (!textures->south)
-        fprintf(stderr, "Error loading texture: south\n");
 
     textures->east = mlx_xpm_file_to_image(mlx, "asserts/textures/east.xpm", &width, &height);
-    if (!textures->east)
-        fprintf(stderr, "Error loading texture: east\n");
 
     textures->west = mlx_xpm_file_to_image(mlx, "asserts/textures/west.xpm", &width, &height);
-    if (!textures->west)
-        fprintf(stderr, "Error loading texture: west\n");
+
+if (!textures->north || !textures->south || !textures->east || !textures->west)
+{
+    fprintf(stderr, "Error: Failed to load one or more textures.\n");
+    exit(EXIT_FAILURE);
+}
 
     debug_textures(textures);
 }
-

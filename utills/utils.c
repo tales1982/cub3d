@@ -6,12 +6,11 @@
 /*   By: tlima-de <tlima-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:04:37 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/01/14 14:15:05 by tlima-de         ###   ########.fr       */
+/*   Updated: 2025/01/15 13:07:19 by tlima-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
-
 
 #include "utils.h"
 
@@ -39,18 +38,17 @@ int touch(float px, float py, t_game *game)
         float offset_x = px - x * BLOCK;
         float offset_y = py - y * BLOCK;
 
-        if (offset_x < 0.1)        // Perto da borda esquerda (WEST)
+        if (offset_x < 1.0) // Perto da borda esquerda (WEST)
             return WEST;
-        else if (offset_x > BLOCK - 0.1) // Perto da borda direita (EAST)
+        else if (offset_x > BLOCK - 1.0) // Perto da borda direita (EAST)
             return EAST;
-        else if (offset_y < 0.1)  // Perto da borda superior (NORTH)
+        else if (offset_y < 1.0) // Perto da borda superior (NORTH)
             return NORTH;
-        else                      // Perto da borda inferior (SOUTH)
+        else if (offset_y > BLOCK - 1.0) // Perto da borda inferior (SOUTH)
             return SOUTH;
     }
     return 0; // Sem colisão
 }
-
 
 void debug_textures(t_textures *textures)
 {
@@ -63,7 +61,6 @@ void debug_textures(t_textures *textures)
     if (textures->west)
         printf("West texture loaded\n");
 }
-
 
 void free_split(char **split)
 {
@@ -79,6 +76,3 @@ void free_split(char **split)
     }
     free(split);
 }
-
-
-
