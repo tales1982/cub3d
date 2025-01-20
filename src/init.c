@@ -6,7 +6,7 @@
 /*   By: tlima-de <tlima-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 22:00:26 by tales             #+#    #+#             */
-/*   Updated: 2025/01/14 12:05:00 by tlima-de         ###   ########.fr       */
+/*   Updated: 2025/01/20 12:37:43 by tlima-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 #include "player.h"  // Para a função init_player
 #include "map.h"     // Para a função load_map
 
-#include "cub3d.h"
-#include "player.h"  // Para a função init_player
-#include "map.h"     // Para a função load_map
 
 void init_game(t_game *game)
 {

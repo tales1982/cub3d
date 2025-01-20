@@ -420,4 +420,15 @@ cub3d
 └─ utills
    └─ utils.c
 
-```
+
+
+## Use o gdb para Depuração
+Para identificar exatamente onde o erro ocorre, use o gdb (GNU Debugger):
+`gdb ./cub3d`
+
+No gdb, inicie a execução com:
+`run`
+
+Quando o erro de segmentação ocorrer, o gdb exibirá a linha exata do código onde o problema aconteceu. Use o comando:
+`backtrace`
+Isso mostrará a pilha de chamadas para entender a origem do problema.

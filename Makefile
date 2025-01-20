@@ -3,7 +3,7 @@ NAME = cub3d
 
 # Compilador e flags
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Ilib/minilibx-linux -Ilib/libft -Iinclude -no-pie
+CFLAGS = -Wall -Wextra -Werror -Ilib/minilibx-linux -Ilib/libft -Iinclude -no-pie -g
 
 # Diretórios
 SRCS_DIRS = src map player render utills textures
@@ -17,7 +17,7 @@ SRCS = $(shell find $(SRCS_DIRS) -type f -name '*.c')
 OBJS = $(patsubst %.c, $(OBJS_DIR)/%.o, $(SRCS))
 
 # Bibliotecas
-LIBS = -L$(LIBMLX_DIR) -lmlx -lm -lX11 -lXext -L$(LIBFT_DIR) -lft
+LIBS = -L$(LIBMLX_DIR) -lmlx -lm -lX11 -lXext -lbsd -L$(LIBFT_DIR) -lft
 
 # Cores para saída
 RESET = \033[0m

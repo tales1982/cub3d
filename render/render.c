@@ -84,7 +84,7 @@ void draw_line(t_player *player, t_game *game, float start_x, int i)
     if (wall_start < 0) wall_start = 0; // Corrige valores negativos
     if (wall_end >= HEIGHT) wall_end = HEIGHT; // Corrige valores maiores que a altura
 
-    int texture_width = 64, texture_height = 64;
+    int texture_width = 40, texture_height = 40;
     int texture_x;
     if (direction == NORTH || direction == SOUTH)
         texture_x = (int)((ray_x - floor(ray_x / BLOCK) * BLOCK) * texture_width / BLOCK);
@@ -126,7 +126,7 @@ int draw_loop(t_game *game)
     t_player *player = &game->player;
 
     // Atualiza a posição do jogador
-    move_player(player);
+    move_player(player, game);
 
     // Limpa a tela
     clear_image(game);
@@ -154,6 +154,7 @@ int draw_loop(t_game *game)
 
     return 0;
 }
+
 
 int get_texture_color(void *img, int x, int y)
 {

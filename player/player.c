@@ -6,7 +6,7 @@
 /*   By: tlima-de <tlima-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:03:17 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/01/14 11:35:26 by tlima-de         ###   ########.fr       */
+/*   Updated: 2025/01/20 14:54:21 by tlima-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,43 +61,62 @@ int key_release(int keycode, t_player *player)
     return 0;
 }
 
-void move_player(t_player *player)
+void move_player(t_player *player, t_game *game)
 {
     int speed = 3;
     float angle_speed = 0.03;
+
+    // Calcula o cosseno e seno do ângulo atual do jogador
     float cos_angle = cos(player->angle);
     float sin_angle = sin(player->angle);
 
+    // Nova posição do jogador
+    float new_x = player->x;
+    float new_y = player->y;
+
+    // Rotação do jogador
     if (player->left_rotate)
         player->angle -= angle_speed;
     if (player->right_rotate)
         player->angle += angle_speed;
     if (player->angle > 2 * PI)
-        player->angle = 0;
+        player->angle -= 2 * PI;
     if (player->angle < 0)
-        player->angle = 2 * PI;
+        player->angle += 2 * PI;
 
+    // Movimento para frente e para trás
     if (player->key_up)
     {
-        player->x += cos_angle * speed;
-        player->y += sin_angle * speed;
+        new_x += cos_angle * speed;
+        new_y += sin_angle * speed;
     }
     if (player->key_down)
     {
-        player->x -= cos_angle * speed;
-        player->y -= sin_angle * speed;
+        new_x -= cos_angle * speed;
+        new_y -= sin_angle * speed;
     }
+
+    // Movimento lateral (strafe)
     if (player->key_left)
     {
-        player->x += sin_angle * speed;
-        player->y -= cos_angle * speed;
+        new_x += sin_angle * speed;
+        new_y -= cos_angle * speed;
     }
     if (player->key_right)
     {
-        player->x -= sin_angle * speed;
-        player->y += cos_angle * speed;
+        new_x -= sin_angle * speed;
+        new_y += cos_angle * speed;
     }
+
+    // Verifica se a nova posição colide com uma parede
+    int map_x = (int)(new_x / BLOCK);
+    int map_y = (int)(new_y / BLOCK);
+    if (game->map[map_y][(int)(player->x / BLOCK)] != '1') // Checa o eixo Y
+        player->y = new_y;
+    if (game->map[(int)(player->y / BLOCK)][map_x] != '1') // Checa o eixo X
+        player->x = new_x;
 }
+
 
 
 /*
