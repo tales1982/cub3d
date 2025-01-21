@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlima-de <tlima-de@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sanweber <sanweber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:03:17 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/01/20 14:54:21 by tlima-de         ###   ########.fr       */
+/*   Updated: 2025/01/20 15:57:28 by sanweber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void init_player(t_player *player)
 
     player->left_rotate = false;
     player->right_rotate = false;
+    player->key_esc = false;
 }
 
 int key_press(int keycode, t_player *player)
@@ -41,6 +42,8 @@ int key_press(int keycode, t_player *player)
         player->left_rotate = true;
     if(keycode == RIGHT)
         player->right_rotate = true;
+    if(keycode == ESC)
+        player->key_esc = true;
     return 0;
 }
 
@@ -58,6 +61,8 @@ int key_release(int keycode, t_player *player)
         player->left_rotate = false;
     if(keycode == RIGHT)
         player->right_rotate = false;
+    if(keycode == ESC)
+        player->key_esc = false;
     return 0;
 }
 

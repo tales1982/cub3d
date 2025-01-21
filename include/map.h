@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlima-de <tlima-de@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:59:00 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/01/20 12:40:45 by tlima-de         ###   ########.fr       */
+/*   Updated: 2025/01/21 14:44:15 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 void draw_map(t_game *game);
 void load_map(const char *file_path, t_game *game);
 void free_map(char **map);
+int exit_program(t_game *game);
 
 
 

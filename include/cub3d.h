@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlima-de <tlima-de@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:58:38 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/01/14 14:24:08 by tlima-de         ###   ########.fr       */
+/*   Updated: 2025/01/21 16:01:00 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 #define D 100
 #define LEFT 65361
 #define RIGHT 65363
+#define ESC 65307
 
 #define PI 3.14159265359
 
@@ -48,6 +49,7 @@ typedef struct s_player {
 
     bool left_rotate;
     bool right_rotate;
+    bool key_esc;
 } t_player;
 
 typedef struct s_textures {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlima-de <tlima-de@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sanweber <sanweber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:01:12 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/01/14 10:54:33 by tlima-de         ###   ########.fr       */
+/*   Updated: 2025/01/21 09:52:59 by sanweber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 #include "render.h"   // Para draw_loop
 #include "map.h"      // Inclua este cabeçalho para acessar free_map
 
+// Callback para o evento de fechamento da janela
+int exit_program(t_game *game)
+{
+    free_map(game->map);
+    exit(0); // Encerra o programa
+    return 0;
+}
 
 int main(void)
 {
@@ -22,6 +29,9 @@ int main(void)
 
     // Inicializa o jogo
     init_game(&game);
+    
+    // Associa o evento de fechamento ao callback
+    mlx_hook(game.win, 17, 0, exit_program, &game);
 
     // Configura eventos de teclado
     mlx_hook(game.win, 2, 1L << 0, key_press, &game.player);
@@ -31,8 +41,8 @@ int main(void)
     mlx_loop_hook(game.mlx, draw_loop, &game);
     mlx_loop(game.mlx);
 
-    // Libera recursos antes de sair
-    free_map(game.map); // Certifique-se de liberar apenas uma vez
+    // Libera recursos antes de sair * foi transferido para draw_loop (ESC)
+    //free_map(game.map); // Certifique-se de liberar apenas uma vez
 
     return 0;
 }

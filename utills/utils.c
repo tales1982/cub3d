@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlima-de <tlima-de@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:04:37 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/01/15 13:07:19 by tlima-de         ###   ########.fr       */
+/*   Updated: 2025/01/21 11:13:26 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void debug_textures(t_textures *textures)
     if (textures->west)
         printf("West texture loaded\n");
 }
+
 
 void free_split(char **split)
 {
