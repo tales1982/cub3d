@@ -1,6 +1,11 @@
 {
     "files.associations": {
+        "*.page-template": "vue",
+        "*.layout-template": "vue",
+        "*.vue": "vue",
         "stdlib.h": "c",
-        "render.h": "c"
+        "render.h": "c",
+        "textures.h": "c",
+        "cmath": "cpp"
     }
 }

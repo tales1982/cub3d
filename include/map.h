@@ -6,7 +6,7 @@
 /*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:59:00 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/01/21 14:44:15 by tales            ###   ########.fr       */
+/*   Updated: 2025/01/22 14:11:46 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@
 
 #define MAP_HEIGHT 15
 #define MAP_WIDTH  30 // Ajuste conforme a largura do seu mapa
-#define WIDTH 1280
-#define HEIGHT 720
 
 
 //funções

@@ -18,7 +18,6 @@ void put_pixel(int x, int y, int color, t_game *game)
     game->data[index + 2] = (color >> 16) & 0xFF; // Vermelho
 }
 
-
 void draw_square(int x, int y, int size, int color, t_game *game)
 {
     // Desenha um quadrado preenchendo cada pixel dentro de um tamanho especificado
@@ -26,7 +25,6 @@ void draw_square(int x, int y, int size, int color, t_game *game)
         for (int j = 0; j < size; j++)
             put_pixel(x + i, y + j, color, game);
 }
-
 
 void draw_line(t_player *player, t_game *game, float start_x, int i)
 {
@@ -65,7 +63,7 @@ void draw_line(t_player *player, t_game *game, float start_x, int i)
         dist = 0.1; // Evita divisões por valores pequenos
 
     // Calcula a altura da parede baseada na distância
-    float height = (BLOCK / dist) * (WIDTH / 2);
+    float height = (BLOCK / dist) * (HEIGHT / 2);
     int wall_start = (int)((HEIGHT - height) / 2);
     int wall_end = (int)(wall_start + height);
 
@@ -80,7 +78,7 @@ void draw_line(t_player *player, t_game *game, float start_x, int i)
     int texture_x;
 
     if (direction == NORTH || direction == SOUTH)
-        texture_x = (int)((ray_x - floor(ray_x / BLOCK) * BLOCK) * texture_width / BLOCK);
+        texture_x = (int)(fmod(ray_x, BLOCK) * texture_width / BLOCK);
     else
         texture_x = (int)((ray_y - floor(ray_y / BLOCK) * BLOCK) * texture_width / BLOCK);
 
@@ -94,6 +92,8 @@ void draw_line(t_player *player, t_game *game, float start_x, int i)
     {
         int texture_y = (y - wall_start) * texture_height / (wall_end - wall_start);
 
+        if (wall_end - wall_start == 0)
+            wall_end = wall_start + 1;
         if (texture_y < 0)
             texture_y = 0;
         if (texture_y >= texture_height)
@@ -131,21 +131,14 @@ int draw_loop(t_game *game)
     // Limpa a tela
     clear_image(game);
 
-    // Renderiza elementos no modo DEBUG
-    if (DEBUG)
-    {
-        draw_square(player->x, player->y, 10, 0x00FF00, game); // Posição do jogador
-        draw_map(game);                                        // Desenha o mapa
-    }
-
     // Raycasting: calcula e desenha os raios
-    float fraction = PI / 3 / WIDTH; // Divisão do campo de visão
+    float fraction = (PI / 3) / WIDTH;      // Divisão do campo de visão
     float start_x = player->angle - PI / 6; // Ângulo inicial
     int i = 0;
     while (i < WIDTH)
     {
         draw_line(player, game, start_x, i); // Renderiza o raio
-        start_x += fraction; // Incrementa o ângulo para o próximo raio
+        start_x += fraction;                 // Incrementa o ângulo para o próximo raio
         i++;
     }
 
@@ -176,7 +169,6 @@ void clear_image(t_game *game)
         for (int x = 0; x < WIDTH; x++)
             put_pixel(x, y, 0, game); // Define a cor preta
 }
-
 
 /*
  *

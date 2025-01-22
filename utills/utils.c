@@ -6,7 +6,7 @@
 /*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:04:37 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/01/21 11:13:26 by tales            ###   ########.fr       */
+/*   Updated: 2025/01/22 11:32:43 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,6 @@ int touch(float px, float py, t_game *game)
     }
     return 0; // Sem colisão
 }
-
-void debug_textures(t_textures *textures)
-{
-    if (textures->north)
-        printf("North texture loaded\n");
-    if (textures->south)
-        printf("South texture loaded\n");
-    if (textures->east)
-        printf("East texture loaded\n");
-    if (textures->west)
-        printf("West texture loaded\n");
-}
-
 
 void free_split(char **split)
 {
