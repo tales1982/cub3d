@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tlima-de <tlima-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 22:00:26 by tales             #+#    #+#             */
-/*   Updated: 2025/01/22 12:04:07 by tales            ###   ########.fr       */
+/*   Updated: 2025/01/20 12:37:43 by tlima-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void init_game(t_game *game)
     load_map("asserts/maps/level1.cub", game);
     load_images(game->mlx, &game->textures);
 
+    // Depurar texturas (opcional)
+    debug_textures(&game->textures);
 
     // Criar a janela
     game->win = mlx_new_window(game->mlx, WIDTH, HEIGHT, "Game");

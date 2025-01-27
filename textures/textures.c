@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tlima-de <tlima-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:19:07 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/01/22 14:52:18 by tales            ###   ########.fr       */
+/*   Updated: 2025/01/15 13:07:54 by tlima-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,13 @@ void load_images(void *mlx, t_textures *textures)
 {
     int width, height;
 
-    textures->north = mlx_xpm_file_to_image(mlx, "asserts/textures/EA.xpm", &width, &height);
-    printf("NO texture size: %d x %d\n", width, height);
+    textures->north = mlx_xpm_file_to_image(mlx, "asserts/textures/north.xpm", &width, &height);
 
-    textures->south = mlx_xpm_file_to_image(mlx, "asserts/textures/SO.xpm", &width, &height);
+    textures->south = mlx_xpm_file_to_image(mlx, "asserts/textures/south.xpm", &width, &height);
 
-    textures->east = mlx_xpm_file_to_image(mlx, "asserts/textures/NO.xpm", &width, &height);
+    textures->east = mlx_xpm_file_to_image(mlx, "asserts/textures/east.xpm", &width, &height);
 
-    textures->west = mlx_xpm_file_to_image(mlx, "asserts/textures/WE.xpm", &width, &height);
+    textures->west = mlx_xpm_file_to_image(mlx, "asserts/textures/west.xpm", &width, &height);
 
 if (!textures->north || !textures->south || !textures->east || !textures->west)
 {
@@ -81,4 +80,5 @@ if (!textures->north || !textures->south || !textures->east || !textures->west)
     exit(EXIT_FAILURE);
 }
 
+    debug_textures(textures);
 }

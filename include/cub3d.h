@@ -6,7 +6,7 @@
 /*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:58:38 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/01/22 14:47:54 by tales            ###   ########.fr       */
+/*   Updated: 2025/01/21 16:01:00 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,8 @@
 #if !defined(CUB3D_H)
 #define CUB3D_H
 
-
-//#define WIDTH 640
-//#define HEIGHT 360
 #define WIDTH 1280
 #define HEIGHT 720
-//#define WIDTH 1920
-//#define HEIGHT 1080
 #define BLOCK 64
 #define DEBUG 0
 
@@ -76,12 +71,13 @@ typedef struct s_game {
 
     t_player player;
     char **map;
-    t_textures textures;
+    t_textures textures; // Adicione esta linha
     int floor_color;
     int ceiling_color;
 } t_game;
 
 
 void init_game(t_game *game);
+void debug_textures(t_textures *textures);
 
 #endif // CUB3D_H  

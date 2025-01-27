@@ -6,7 +6,7 @@
 /*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:04:37 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/01/22 11:32:43 by tales            ###   ########.fr       */
+/*   Updated: 2025/01/27 11:32:50 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,16 @@ float fixed_dist(float x1, float y1, float x2, float y2, t_game *game)
 {
     float delta_x = x2 - x1;
     float delta_y = y2 - y1;
-    float angle = atan2(delta_y, delta_x) - game->player.angle;
-    float fix_dist = distance(delta_x, delta_y) * cos(angle);
-    return fix_dist;
+    float angle_diff = atan2(delta_y, delta_x) - game->player.angle;
+
+    while (angle_diff < -PI)
+        angle_diff += 2 * PI;
+    while (angle_diff > PI)
+        angle_diff -= 2 * PI;
+
+    return sqrt(delta_x * delta_x + delta_y * delta_y) * cos(angle_diff);
 }
+
 
 int touch(float px, float py, t_game *game)
 {
@@ -49,6 +55,19 @@ int touch(float px, float py, t_game *game)
     }
     return 0; // Sem colisão
 }
+
+void debug_textures(t_textures *textures)
+{
+    if (textures->north)
+        printf("North texture loaded\n");
+    if (textures->south)
+        printf("South texture loaded\n");
+    if (textures->east)
+        printf("East texture loaded\n");
+    if (textures->west)
+        printf("West texture loaded\n");
+}
+
 
 void free_split(char **split)
 {

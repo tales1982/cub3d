@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sanweber <sanweber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:03:17 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/01/22 14:03:01 by tales            ###   ########.fr       */
+/*   Updated: 2025/01/20 15:57:28 by sanweber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ int key_release(int keycode, t_player *player)
 
 void move_player(t_player *player, t_game *game)
 {
-    int speed = 1;
-    float angle_speed = 0.02;
+    int speed = 3;
+    float angle_speed = 0.03;
 
     // Calcula o cosseno e seno do ângulo atual do jogador
     float cos_angle = cos(player->angle);
