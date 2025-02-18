@@ -6,7 +6,7 @@
 /*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:01:12 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/02/18 13:54:51 by tales            ###   ########.fr       */
+/*   Updated: 2025/02/18 15:16:24 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,14 @@ int main(int argc, char *argv[])
         return (0);
     }
     close(fd);
-    //exit(0);  // tem que tirar isso daqui, usando so pra teste
-    //init_game(&game);
-    game.MAP_HEIGHT = (21);
-    game.MAP_WIDTH = 30;
+    game.MAP_HEIGHT = map_lines;
+   
+    printf("LInhas---%d\n", map_lines);
+    for(int i = 0; i < map_lines; i++)
+    {
+        printf("LInhas---%s\n", map[i]);
+    }
+    game.MAP_WIDTH = 100;
     init_game(&game, map);
     mlx_hook(game.win, 17, 0, exit_program, &game); /*evento fechamento*/
     mlx_hook(game.win, 2, 1L << 0, key_press, &game.player); /*eventos teclado*/

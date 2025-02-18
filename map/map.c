@@ -6,7 +6,7 @@
 /*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:02:16 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/02/18 13:59:23 by tales            ###   ########.fr       */
+/*   Updated: 2025/02/18 15:34:12 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void load_map(char map[MAX_MAP_LINES][MAX_LINE], t_game *game)
     int row = 0;
     bool map_started = false;
 
-    game->map = malloc(sizeof(char *) * (game->MAP_HEIGHT + 1));
+    game->map = malloc(sizeof(char *) * (game->MAP_HEIGHT + 1  - 6));
     if (!game->map)
     {
         perror("Error allocating memory for map");
@@ -76,10 +76,8 @@ void load_map(char map[MAX_MAP_LINES][MAX_LINE], t_game *game)
             {
                 parse_colors(line, game);
             }
-            else if (ft_isdigit(line[0]))
-            {
+            else
                 map_started = true;
-            }
         }
 
         if (map_started)

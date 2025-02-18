@@ -6,14 +6,12 @@
 /*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:03:17 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/02/18 13:44:51 by tales            ###   ########.fr       */
+/*   Updated: 2025/02/18 15:40:59 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "player.h"
-#include<stdio.h>
+#include <stdio.h>
 
 void init_player(t_player *player)
 {
@@ -33,38 +31,38 @@ void init_player(t_player *player)
 
 int key_press(int keycode, t_player *player)
 {
-    if(keycode == W)
+    if (keycode == W)
         player->key_up = true;
-    if(keycode == S)
+    if (keycode == S)
         player->key_down = true;
-    if(keycode == A)
+    if (keycode == A)
         player->key_left = true;
-    if(keycode == D)
+    if (keycode == D)
         player->key_right = true;
-    if(keycode == LEFT)
+    if (keycode == LEFT)
         player->left_rotate = true;
-    if(keycode == RIGHT)
+    if (keycode == RIGHT)
         player->right_rotate = true;
-    if(keycode == ESC)
+    if (keycode == ESC)
         player->key_esc = true;
     return 0;
 }
 
 int key_release(int keycode, t_player *player)
 {
-    if(keycode == W)
+    if (keycode == W)
         player->key_up = false;
-    if(keycode == S)
+    if (keycode == S)
         player->key_down = false;
-    if(keycode == A)
+    if (keycode == A)
         player->key_left = false;
-    if(keycode == D)
+    if (keycode == D)
         player->key_right = false;
-    if(keycode == LEFT)
+    if (keycode == LEFT)
         player->left_rotate = false;
-    if(keycode == RIGHT)
+    if (keycode == RIGHT)
         player->right_rotate = false;
-    if(keycode == ESC)
+    if (keycode == ESC)
         player->key_esc = false;
     return 0;
 }
@@ -72,7 +70,7 @@ int key_release(int keycode, t_player *player)
 void move_player(t_player *player, t_game *game)
 {
     int speed = 3;
-    float angle_speed = 0.03;
+    float angle_speed = 0.02;
 
     // Calcula o cosseno e seno do ângulo atual do jogador
     float cos_angle = cos(player->angle);
@@ -123,8 +121,7 @@ void move_player(t_player *player, t_game *game)
         player->y = new_y;
     if (game->map[(int)(player->y / BLOCK)][map_x] != '1') // Checa o eixo X
         player->x = new_x;
-    }
-
+}
 
 
 /*
