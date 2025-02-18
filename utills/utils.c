@@ -6,11 +6,9 @@
 /*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:04:37 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/01/27 11:32:50 by tales            ###   ########.fr       */
+/*   Updated: 2025/02/18 14:01:00 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "utils.h"
 
 #include "utils.h"
 
@@ -36,8 +34,20 @@ float fixed_dist(float x1, float y1, float x2, float y2, t_game *game)
 
 int touch(float px, float py, t_game *game)
 {
+    if (!game || !game->map) // Ver se o game e o mapa são válidos ULTIMA COISA
+    {
+        //printf("error game - touch \n"); // tirar, botei pra teste todo if
+        return 0;
+    }
+        
     int x = (int)(px / BLOCK);
     int y = (int)(py / BLOCK);
+
+    if (y < 0 || y >= game->MAP_HEIGHT || x < 0 || x >= game->MAP_WIDTH)
+    {
+        //printf("error map - touch ok \n");  // tirar, botei pra teste todo if
+        return 0;
+    }
 
     if (game->map[y][x] == '1')
     {

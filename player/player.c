@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanweber <sanweber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:03:17 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/01/20 15:57:28 by sanweber         ###   ########.fr       */
+/*   Updated: 2025/02/18 13:44:51 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+
 #include "player.h"
+#include<stdio.h>
 
 void init_player(t_player *player)
 {
@@ -120,7 +123,7 @@ void move_player(t_player *player, t_game *game)
         player->y = new_y;
     if (game->map[(int)(player->y / BLOCK)][map_x] != '1') // Checa o eixo X
         player->x = new_x;
-}
+    }
 
 
 

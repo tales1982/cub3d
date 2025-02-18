@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlima-de <tlima-de@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:02:16 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/01/14 13:45:09 by tlima-de         ###   ########.fr       */
+/*   Updated: 2025/02/18 13:59:23 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,67 +39,67 @@ void free_map(char **map)
     map = NULL;
 }
 
-void load_map(const char *file_path, t_game *game)
+//void load_map(const char *file_path, t_game *game)
+void load_map(char map[MAX_MAP_LINES][MAX_LINE], t_game *game)
 {
-    int fd = open(file_path, O_RDONLY);
-    if (fd < 0)
-    {
-        perror("Error opening map file");
-        exit(EXIT_FAILURE);
-    }
-
-    char *line = NULL;
+    int i = 0;
     int row = 0;
     bool map_started = false;
 
-    // Alocar memória para o mapa
-    game->map = malloc(sizeof(char *) * (MAP_HEIGHT + 1)); // +1 para NULL
+    game->map = malloc(sizeof(char *) * (game->MAP_HEIGHT + 1));
     if (!game->map)
     {
         perror("Error allocating memory for map");
         exit(EXIT_FAILURE);
     }
 
-    while ((line = get_next_line(fd)) != NULL)
+    while (i < game->MAP_HEIGHT)
     {
+        // Em vez de usar um buffer local, duplica a linha
+        char *line = ft_strdup(map[i]);
+        if (!line)
+        {
+            perror("Error duplicating map line");
+            exit(EXIT_FAILURE);
+        }
+
+        //printf("DEBUG[%ld]\n", ft_strlen(line));
+
         if (!map_started)
         {
-            // Processar linhas de configuração
-            if (ft_strncmp(line, "NO ", 3) == 0 || ft_strncmp(line, "WE ", 3) == 0 ||
-                ft_strncmp(line, "SO ", 3) == 0 || ft_strncmp(line, "EA ", 3) == 0)
+            if (ft_strncmp(line, "NO", 2) == 0 || ft_strncmp(line, "WE", 2) == 0 ||
+                ft_strncmp(line, "SO", 2) == 0 || ft_strncmp(line, "EA", 2) == 0)
             {
                 load_textures(line, &game->textures);
             }
-            else if (ft_strncmp(line, "F ", 2) == 0 || ft_strncmp(line, "C ", 2) == 0)
+            else if (ft_strncmp(line, "F", 1) == 0 || ft_strncmp(line, "C", 1) == 0)
             {
-                parse_colors(line, game); // Adicione uma função para processar cores do teto e do chão
+                parse_colors(line, game);
             }
             else if (ft_isdigit(line[0]))
             {
-                // Início do mapa detectado
                 map_started = true;
             }
         }
 
         if (map_started)
         {
-            if (row >= MAP_HEIGHT)
+            if (row >= game->MAP_HEIGHT)
             {
                 fprintf(stderr, "Error: Map exceeds defined height\n");
-                free(line);
                 free_map(game->map);
-                close(fd);
                 exit(EXIT_FAILURE);
             }
-            game->map[row++] = line;
+            game->map[row++] = line;  // Armazena a string duplicada
         }
         else
         {
-            free(line);
+            free(line);  // Se não for parte do mapa, libera a linha
         }
+        i++;
     }
 
-    game->map[row] = NULL; // Finaliza o array do mapa
-    close(fd);
+    game->map[row] = NULL;
+    /* Opcional: atualize game->MAP_HEIGHT com o número real de linhas lidas */
+    game->MAP_HEIGHT = row;
 }
-
