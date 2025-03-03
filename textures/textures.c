@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlima-de <tlima-de@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:19:07 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/02/19 13:17:55 by tlima-de         ###   ########.fr       */
+/*   Updated: 2025/03/03 17:10:33 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ static int	get_color_value(char **split)
 void	load_textures(const char *line, t_textures *textures)
 {
 	if (ft_strncmp(line, "NO", 2) == 0)
-		textures->north = ft_strdup(line + 2);
+		textures->no = ft_strdup(line + 2);
 	else if (ft_strncmp(line, "WE", 2) == 0)
-		textures->west = ft_strdup(line + 2);
+		textures->we = ft_strdup(line + 2);
 	else if (ft_strncmp(line, "SO", 2) == 0)
-		textures->south = ft_strdup(line + 2);
+		textures->so = ft_strdup(line + 2);
 	else if (ft_strncmp(line, "EA", 2) == 0)
-		textures->east = ft_strdup(line + 2);
+		textures->ea = ft_strdup(line + 2);
 	else
 	{
 		fprintf(stderr, "Error: Invalid texture line\n");
@@ -84,13 +84,13 @@ void	load_images(void *mlx, t_textures *textures)
 	int	width;
 	int	height;
 
-	textures->north = mlx_xpm_file_to_image(mlx, "asserts/textures/1.xpm",
+	textures->north = mlx_xpm_file_to_image(mlx, textures->no,
 			&width, &height);
-	textures->south = mlx_xpm_file_to_image(mlx, "asserts/textures/2.xpm",
+	textures->south = mlx_xpm_file_to_image(mlx, textures->so,
 			&width, &height);
-	textures->east = mlx_xpm_file_to_image(mlx, "asserts/textures/3.xpm",
+	textures->east = mlx_xpm_file_to_image(mlx, textures->ea,
 			&width, &height);
-	textures->west = mlx_xpm_file_to_image(mlx, "asserts/textures/4.xpm",
+	textures->west = mlx_xpm_file_to_image(mlx, textures->we,
 			&width, &height);
 	if (!textures->north || !textures->south || !textures->east || \
 		!textures->west)

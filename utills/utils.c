@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlima-de <tlima-de@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:04:37 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/02/19 11:43:01 by tlima-de         ###   ########.fr       */
+/*   Updated: 2025/03/03 17:10:38 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	touch(float px, float py, t_game *game)
 		return (0);
 	x = (int)(px / BLOCK);
 	y = (int)(py / BLOCK);
-	if (y < 0 || y >= game->MAP_HEIGHT || x < 0 || x >= game->MAP_WIDTH)
+	if (y < 0 || y >= game->map_height || x < 0 || x >= game->map_width)
 		return (0);
 	if (game->map[y][x] == '1')
 	{

@@ -6,27 +6,67 @@
 /*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:00:34 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/01/21 11:13:14 by tales            ###   ########.fr       */
+/*   Updated: 2025/03/03 17:12:58 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef RENDER_H
+# define RENDER_H
 
-//funções e estruturas relacionadas à renderização
+# include "cub3d.h"
+# include "map.h"
+# include "player.h"
+# include "utils.h"
+# include <math.h>
+# include <mlx.h>
+# include <stdio.h>
+# include <stdlib.h>
 
-#if !defined(RENDER_H)
-#define RENDER_H
+/* Estruturas de renderização */
+typedef struct s_ray
+{
+	float	x;
+	float	y;
+	int		direction;
+}			t_ray;
 
-#include "cub3d.h"
+typedef struct s_draw_data
+{
+	float	dist;
+	float	height;
+	int		wall_start;
+	int		wall_end;
+	int		texture_x;
+	int		texture_width;
+	int		texture_height;
+	void	*texture;
+}			t_draw_data;
 
+typedef struct s_point
+{
+	int		x;
+	int		y;
+}			t_point;
 
+/* Funções de manipulação de pixels e imagem */
+void		put_pixel(int x, int y, int color, t_game *game);
+void		draw_square(t_point pos, int size, int color, t_game *game);
+int			get_texture_color(void *img, int x, int y);
+void		clear_image(t_game *game);
 
-//funções de renderização
-void put_pixel(int x, int y, int color, t_game *game);
-void clear_image(t_game *game);
-void draw_square(int x, int y, int size, int color, t_game *game);
-void draw_line(t_player *player, t_game *game, float start_x, int i);
-int draw_loop(t_game *game);
-int get_texture_color(void *img, int x, int y);
+/* Funções de desenho de raios e loop de renderização */
+void		draw_line(t_player *player, t_game *game, float angle, int col);
+int			draw_loop(t_game *game);
 
+/* Funções auxiliares para renderização */
+void		compute_ray(t_player *player, t_game *game, float angle,
+				t_ray *ray);
+void		select_texture(t_game *game, t_ray *ray, t_draw_data *data);
+
+void		compute_wall_bounds(t_game *game, t_player *player, t_ray *ray,
+				t_draw_data *data);
+void		compute_texture_index(t_ray *ray, t_draw_data *data);
+void		compute_draw_data(t_game *game, t_player *player, t_ray *ray,
+				t_draw_data *data);
 
 #endif // RENDER_H

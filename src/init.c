@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlima-de <tlima-de@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sanweber <sanweber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 22:00:26 by tales             #+#    #+#             */
-/*   Updated: 2025/02/19 13:39:44 by tlima-de         ###   ########.fr       */
+/*   Updated: 2025/02/27 17:20:49 by sanweber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,12 @@ void	set_player_position(t_game *game)
 	}
 }
 
-void	init_game(t_game *game, char map[MAX_MAP_LINES][MAX_LINE])
+void	init_game(t_game *game, char **map)
 {
 	init_mlx(game);
 	init_player(&game->player);
 	load_map(map, game);
 	load_images(game->mlx, &game->textures);
-	debug_textures(&game->textures);
 	set_player_position(game);
 	init_window_img_data(game);
 }
