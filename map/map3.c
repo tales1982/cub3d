@@ -3,20 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map3.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanweber <sanweber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:39:22 by sanweber          #+#    #+#             */
-/*   Updated: 2025/02/24 14:17:40 by sanweber         ###   ########.fr       */
+/*   Updated: 2025/03/03 22:13:53 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "map.h"
-#include <fcntl.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
 
 int	is_valid_char(char c)
 {
@@ -172,11 +166,12 @@ int	is_map_closed(char **map, int map_lines)
 		while (map[i][j] != '\0')
 		{
 			if (map[i][j] == '0' && ((i > 0 && j >= (int)strlen(map[i - 1]))
-				|| (i < map_lines - 1 && j >= (int)strlen(map[i + 1]))
-				|| (i > 0 && (map[i - 1][j] == ' ' || map[i - 1][j] == '\0'))
-				|| (i < map_lines - 1 && (map[i + 1][j] == ' ' || map[i
-						+ 1][j] == '\0')) || (j > 0 && map[i][j - 1] == ' ')
-				|| (map[i][j + 1] != '\0' && map[i][j + 1] == ' ')))
+					|| (i < map_lines - 1 && j >= (int)strlen(map[i + 1]))
+					|| (i > 0 && (map[i - 1][j] == ' ' || map[i
+							- 1][j] == '\0')) || (i < map_lines - 1 && (map[i
+							+ 1][j] == ' ' || map[i + 1][j] == '\0')) || (j > 0
+						&& map[i][j - 1] == ' ') || (map[i][j + 1] != '\0'
+						&& map[i][j + 1] == ' ')))
 				return (0);
 			j++;
 		}

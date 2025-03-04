@@ -6,7 +6,7 @@
 /*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:00:34 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/03/03 17:12:58 by tales            ###   ########.fr       */
+/*   Updated: 2025/03/04 10:21:30 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "cub3d.h"
 # include "map.h"
 # include "player.h"
+# include "point.h"
 # include "utils.h"
 # include <math.h>
 # include <mlx.h>
@@ -42,15 +43,9 @@ typedef struct s_draw_data
 	void	*texture;
 }			t_draw_data;
 
-typedef struct s_point
-{
-	int		x;
-	int		y;
-}			t_point;
-
 /* Funções de manipulação de pixels e imagem */
 void		put_pixel(int x, int y, int color, t_game *game);
-void		draw_square(t_point pos, int size, int color, t_game *game);
+void		draw_s(t_point pos, int size, int color, t_game *game);
 int			get_texture_color(void *img, int x, int y);
 void		clear_image(t_game *game);
 

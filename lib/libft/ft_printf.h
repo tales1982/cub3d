@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleleu <sleleu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 18:09:55 by sleleu            #+#    #+#             */
-/*   Updated: 2022/11/26 00:29:58 by sleleu           ###   ########.fr       */
+/*   Updated: 2025/03/04 09:43:34 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# if defined (APPLE)
+# if defined(APPLE)
 #  define PTR_NULL "0x0"
 # elif linux
 #  define PTR_NULL "(nil)"

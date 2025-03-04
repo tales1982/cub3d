@@ -6,7 +6,7 @@
 /*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:04:37 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/03/03 17:10:38 by tales            ###   ########.fr       */
+/*   Updated: 2025/03/04 09:57:39 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ float	distance(float x, float y)
 	return (sqrt(x * x + y * y));
 }
 
-float	fixed_dist(float x1, float y1, float x2, float y2, t_game *game)
+float	fixed_dist(t_point p1, t_point p2, float angle)
 {
 	float	delta_x;
 	float	delta_y;
 	float	angle_diff;
 
-	delta_x = x2 - x1;
-	delta_y = y2 - y1;
-	angle_diff = atan2(delta_y, delta_x) - game->player.angle;
+	delta_x = p2.x - p1.x;
+	delta_y = p2.y - p1.y;
+	angle_diff = atan2(delta_y, delta_x) - angle;
 	while (angle_diff < -PI)
 		angle_diff += 2 * PI;
 	while (angle_diff > PI)

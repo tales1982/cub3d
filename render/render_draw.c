@@ -6,12 +6,11 @@
 /*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:49:28 by tales             #+#    #+#             */
-/*   Updated: 2025/03/03 17:01:11 by tales            ###   ########.fr       */
+/*   Updated: 2025/03/03 22:21:51 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
-
 
 static void	draw_vertical_stripe(t_game *game, int col, t_draw_data *data)
 {
@@ -46,7 +45,6 @@ void	draw_line(t_player *player, t_game *game, float angle, int col)
 	t_draw_data	data;
 	t_ray		ray;
 
-	/* As funções compute_ray e compute_draw_data foram movidas para render_utils.c */
 	compute_ray(player, game, angle, &ray);
 	compute_draw_data(game, player, &ray, &data);
 	if (!data.texture)
@@ -68,8 +66,7 @@ int	draw_loop(t_game *game)
 	clear_image(game);
 	if (DEBUG)
 	{
-		draw_square((t_point){(int)player->x, (int)player->y}, 10, 0x00FF00,
-			game);
+		draw_s((t_point){(int)player->x, (int)player->y}, 10, 0x00FF00, game);
 		draw_map(game);
 	}
 	fraction = PI / 3 / WIDTH;

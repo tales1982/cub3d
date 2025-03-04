@@ -3,20 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map2.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanweber <sanweber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:39:22 by sanweber          #+#    #+#             */
-/*   Updated: 2025/02/24 14:07:41 by sanweber         ###   ########.fr       */
+/*   Updated: 2025/03/03 22:12:11 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "map.h"
-#include <fcntl.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
 
 void	error_system(char *str)
 {

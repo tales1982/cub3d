@@ -6,7 +6,7 @@
 /*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 14:59:00 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/03/03 16:44:48 by tales            ###   ########.fr       */
+/*   Updated: 2025/03/03 22:12:46 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <string.h>
 # include <unistd.h>
 
 # define MAX_LINE 256

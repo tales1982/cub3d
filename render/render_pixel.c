@@ -6,12 +6,11 @@
 /*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:25:56 by tales             #+#    #+#             */
-/*   Updated: 2025/03/03 17:00:42 by tales            ###   ########.fr       */
+/*   Updated: 2025/03/03 22:27:25 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
-
 
 void	put_pixel(int x, int y, int color, t_game *game)
 {
@@ -25,24 +24,23 @@ void	put_pixel(int x, int y, int color, t_game *game)
 	game->data[index + 2] = (color >> 16) & 0xFF;
 }
 
-void draw_square(t_point pos, int size, int color, t_game *game)
+void	draw_s(t_point pos, int size, int color, t_game *game)
 {
-    int i;
-    int j;
+	int	i;
+	int	j;
 
-    i = 0;
-    while (i < size)
-    {
-        j = 0;
-        while (j < size)
-        {
-            put_pixel(pos.x + i, pos.y + j, color, game);
-            j++;
-        }
-        i++;
-    }
+	i = 0;
+	while (i < size)
+	{
+		j = 0;
+		while (j < size)
+		{
+			put_pixel(pos.x + i, pos.y + j, color, game);
+			j++;
+		}
+		i++;
+	}
 }
-
 
 int	get_texture_color(void *img, int x, int y)
 {
@@ -64,8 +62,8 @@ int	get_texture_color(void *img, int x, int y)
 
 void	clear_image(t_game *game)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	y = 0;
 	while (y < HEIGHT)

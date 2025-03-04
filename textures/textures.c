@@ -6,7 +6,7 @@
 /*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:19:07 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/03/03 17:10:33 by tales            ###   ########.fr       */
+/*   Updated: 2025/03/03 22:28:24 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,16 +84,12 @@ void	load_images(void *mlx, t_textures *textures)
 	int	width;
 	int	height;
 
-	textures->north = mlx_xpm_file_to_image(mlx, textures->no,
-			&width, &height);
-	textures->south = mlx_xpm_file_to_image(mlx, textures->so,
-			&width, &height);
-	textures->east = mlx_xpm_file_to_image(mlx, textures->ea,
-			&width, &height);
-	textures->west = mlx_xpm_file_to_image(mlx, textures->we,
-			&width, &height);
-	if (!textures->north || !textures->south || !textures->east || \
-		!textures->west)
+	textures->north = mlx_xpm_file_to_image(mlx, textures->no, &width, &height);
+	textures->south = mlx_xpm_file_to_image(mlx, textures->so, &width, &height);
+	textures->east = mlx_xpm_file_to_image(mlx, textures->ea, &width, &height);
+	textures->west = mlx_xpm_file_to_image(mlx, textures->we, &width, &height);
+	if (!textures->north || !textures->south || !textures->east
+		|| !textures->west)
 	{
 		fprintf(stderr, "Error: Failed to load one or more textures.\n");
 		exit(EXIT_FAILURE);

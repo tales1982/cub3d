@@ -6,7 +6,7 @@
 /*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:02:16 by tlima-de          #+#    #+#             */
-/*   Updated: 2025/03/03 17:03:37 by tales            ###   ########.fr       */
+/*   Updated: 2025/03/03 22:25:16 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	draw_map(t_game *game)
 		while (map[y][x])
 		{
 			if (map[y][x] == '1')
-			draw_square((t_point){x * BLOCK, y * BLOCK}, BLOCK, color, game);
+				draw_s((t_point){x * BLOCK, y * BLOCK}, BLOCK, color,
+					game);
 			x++;
 		}
 		y++;
