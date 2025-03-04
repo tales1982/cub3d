@@ -1,5 +1,5 @@
 # Nome do executável
-NAME = cub3d
+NAME = cub3D
 
 # Compilador e flags
 CC = gcc
