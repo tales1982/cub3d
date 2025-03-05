@@ -6,7 +6,7 @@
 /*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:39:22 by sanweber          #+#    #+#             */
-/*   Updated: 2025/03/03 22:12:11 by tales            ###   ########.fr       */
+/*   Updated: 2025/03/05 12:13:46 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,33 +87,4 @@ int	parse_map(int fd, char **map, int *map_lines)
 	if (flags == 111111)
 		return (1);
 	return (0);
-}
-
-int	mapvalid(int fd, char **map, int *map_lines, int *map_width)
-{
-	int	i;
-
-	*map_lines = 0;
-	if (!parse_map(fd, map, map_lines))
-	{
-		printf("Error: Invalid Textures or Colors\n");
-		return (0);
-	}
-	charge_map(fd, map, map_lines, map_width);
-	i = 6;
-	while (i < *map_lines)
-	{
-		if (!is_valid_map_line(map[i]))
-		{
-			printf("Error: Map Line %d Invalid\n", ((i - 6) + 1));
-			return (0);
-		}
-		i++;
-	}
-	if (!is_map_closed(map, *map_lines))
-	{
-		printf("Error: Map is not Closed\n");
-		return (0);
-	}
-	return (1);
 }

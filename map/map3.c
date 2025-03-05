@@ -6,19 +6,26 @@
 /*   By: tales <tales@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:39:22 by sanweber          #+#    #+#             */
-/*   Updated: 2025/03/03 22:13:53 by tales            ###   ########.fr       */
+/*   Updated: 2025/03/05 11:50:13 by tales            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 
-int	is_valid_char(char c)
+int	is_valid_char(char c, int *flag)
 {
-	return (c == ' ' || c == '0' || c == '1' || c == 'N' || c == 'S' || c == 'E'
-		|| c == 'W');
+	if (c == ' ' || c == '0' || c == '1' || c == 'N' || c == 'S' || c == 'E'
+		|| c == 'W')
+	{
+		if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
+			(*flag)++;
+		return (1);
+	}
+	else
+		return (0);
 }
 
-int	is_valid_map_line(const char *line)
+int	is_valid_map_line(const char *line, int *flag)
 {
 	int	i;
 	int	inside_block;
@@ -40,66 +47,12 @@ int	is_valid_map_line(const char *line)
 				i--;
 			}
 		}
-		else if (!is_valid_char(line[i]))
+		if (!is_valid_char(line[i], flag))
 			return (0);
 		i++;
 	}
 	return (1);
 }
-/*
-int	is_map_closed(char **map, int map_lines)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (map[6][i] != '\0')
-	{
-		if (map[6][i] != '1' && map[6][i] != ' ')
-			return (0);
-		i++;
-	}
-	i = 0;
-	while (map[map_lines - 1][i] != '\0')
-	{
-		if (map[map_lines - 1][i] != '1' && map[map_lines - 1][i] != ' ')
-			return (0);
-		i++;
-	}
-	i = 6;
-	while (i < map_lines - 1)
-	{
-		j = 0;
-		while (map[i][j] == ' ')
-			j++;
-		if (map[i][j] != '1')
-			return (0);
-		j = strlen(map[i]) - 1;
-		while (j >= 0 && map[i][j] == ' ')
-			j--;
-		if (j >= 0 && map[i][j] != '1')
-			return (0);
-		j = 0;
-		while (map[i][j] != '\0')
-		{
-			if (map[i][j] == '0')
-			{
-				if ((i > 0 && j >= (int)strlen(map[i - 1])) || (i < map_lines
-						- 1 && j >= (int)strlen(map[i + 1])))
-					return (0);
-				if ((i > 0 && (map[i - 1][j] == ' ' || map[i - 1][j] == '\0'))
-					|| (i < map_lines - 1 && (map[i + 1][j] == ' ' || map[i
-							+ 1][j] == '\0')) || (j > 0 && map[i][j - 1] == ' ')
-					|| (map[i][j + 1] != '\0' && map[i][j + 1] == ' '))
-					return (0);
-			}
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
-*/
 
 void	charge_map(int fd, char **map, int *map_lines, int *map_width)
 {
